@@ -33,6 +33,29 @@
         </div>
     </nav>
 
+    <div class="modal fade" id="modal-portion" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="modal-portion-label" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="modal-portion-label">Quantité</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="mb-1">
+                      <input type="number" class="form-control" id="quatity">
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
+              <button type="button" class="btn btn-danger" id="reset-portion">Réinitialiser</button>
+              <button type="button" class="btn btn-primary" id="desired-portion">Ajouter</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
     <div style="max-width: 1280px;margin: 35px auto 0 auto;" class="container">
         <h1>Organise tes repas de la journée</h1>
 
