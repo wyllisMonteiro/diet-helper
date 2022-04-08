@@ -6,3 +6,16 @@
 .display-alert {
     opacity: 1 !important;
 }
+
+.card-body {
+    cursor: pointer;
+}
+
+.card-body:hover {
+    cursor: pointer;
+    background-color: #f7f7f7;
+}
+
+.card-selected {
+    border: 1px solid blue;
+}

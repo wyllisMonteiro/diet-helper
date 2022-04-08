@@ -7,7 +7,7 @@ const MIN_SIZE = 80;
 const MAX_SIZE = 280;
 
 // Basal Metabolic Rate (métabolisme de base)
-const computeBMR = (age, weight, size) => {
+const computeBMR = (age, weight, size, gender = "male") => {
     if (age < MIN_AGE)
         age = MIN_AGE;
 
@@ -18,7 +18,10 @@ const computeBMR = (age, weight, size) => {
         throw new Error(`Taille doit être compris entre ${MIN_SIZE} et ${MAX_SIZE} cm`);
 
     // using  Mifflin St-Jeor equation
-    return 10 * weight + 6.25 * size - 5 * age + 5;
+    if (gender == "male")
+        return 10 * weight + 6.25 * size - 5 * age + 5;
+
+    return 10 * weight + 6.25 * size - 5 * age - 161
 }
 
 const COEFF_ACTIVITY = {
