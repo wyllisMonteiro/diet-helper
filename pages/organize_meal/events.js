@@ -9,18 +9,25 @@ function foodClicked() {
 
 function addPortionFoodButtonClicked() {
     const quantity = document.getElementById("quantity").value;
-
     setFoodQuantity(foodNameWaitingToBeAdded, quantity);
+    document.getElementById("quantity").value = quantity;
 
-    document.getElementById("quantity").value = getFoodQantity(foodNameWaitingToBeAdded);
+    if (quantity > 0)
+        document.querySelector(`.card[data-food='${foodNameWaitingToBeAdded}']`).classList.add("card-selected");
+    else
+        document.querySelector(`.card[data-food='${foodNameWaitingToBeAdded}']`).classList.remove("card-selected");
+
+
     const energy = computeEnergyFromSelectedFoods();
     document.getElementById("energy").innerText = `${energy} kcal`;
 }
 
 function resetPortionFoodButtonClicked() {
     setFoodQuantity(foodNameWaitingToBeAdded, 0);
+    document.getElementById("quantity").value = 0;
 
-    document.getElementById("quantity").value = getFoodQantity(foodNameWaitingToBeAdded);
+    document.querySelector(`.card[data-food='${foodNameWaitingToBeAdded}']`).classList.remove("card-selected");
+
     const energy = computeEnergyFromSelectedFoods();
     document.getElementById("energy").innerText = `${energy} kcal`;
 }
