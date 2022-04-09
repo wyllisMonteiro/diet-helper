@@ -8,7 +8,7 @@ import dairy from "../../foods/dairy";
 import fruits from "../../foods/fruits";
 import foodSupplements from "../../foods/food_supplements";
 
-import { foodClicked, addPortionFoodButtonClicked, resetPortionFoodButtonClicked } from "./events";
+import { addPortionClicked, confirmAddPortionButtonClicked, confirmResetPortionButtonClicked } from "./events";
 
 const foods = {
     ...meats,
@@ -33,11 +33,11 @@ const addFoodToCard = (food, index, indexCardToShowFirst) => {
     }
 
     const foodName = Object.keys(foods)[index];
-    document.getElementById(`${food.category}`).innerHTML += `<div class="card" style="width: 45%" data-food="${foodName}">
+    document.getElementById(`${food.category}`).innerHTML += `<div class="card" style="width: 45%">
         <div class="card-body">
             <h5 class="card-title">${food.title}</h5>
             <p class="card-text">Énergie : ${food.nutritional_values.energy_value} ${food.nutritional_values.energy_unity}</p>
-            <a href="#" class="card-link" data-bs-toggle="modal" data-bs-target="#modal-portion">Ajouter</a>
+            <a href="#" data-food="${foodName}" class="card-link card-link-add" data-bs-toggle="modal" data-bs-target="#modal-portion">Ajouter</a>
         </div>
     </div>`;
 }
@@ -46,13 +46,13 @@ Object.values(foods).forEach((food, index) => {
     addFoodToCard(food, index, INDEX_CARD_TO_SHOW);
 })
 
-const cards = document.querySelectorAll(".card");
+const cards = document.querySelectorAll(".card-link-add");
 cards.forEach(card => {
-    card.addEventListener("click", foodClicked)
+    card.addEventListener("click", addPortionClicked)
 })
 
-const addPortionFoodButton = document.getElementById("desired-portion");
-addPortionFoodButton.addEventListener("click", addPortionFoodButtonClicked);
+const addPortionFoodModalButton = document.getElementById("desired-portion");
+addPortionFoodModalButton.addEventListener("click", confirmAddPortionButtonClicked);
 
-const resetPortionFoodButton = document.getElementById("reset-portion");
-resetPortionFoodButton.addEventListener("click", resetPortionFoodButtonClicked);
+const resetPortionFoodModalButton = document.getElementById("reset-portion");
+resetPortionFoodModalButton.addEventListener("click", confirmResetPortionButtonClicked);
