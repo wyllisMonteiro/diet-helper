@@ -1,6 +1,7 @@
 export default
 {
     peas_carrots: {
+        category: "vegetables",
         title: "Petits pois carottes",
         weight_value: 530,
         weight_unity: "g",
@@ -18,6 +19,7 @@ export default
     },
 
     green_beans: {
+        category: "vegetables",
         title: "Haricots verts",
         weight_value: 440,
         weight_unity: "g",
@@ -35,6 +37,7 @@ export default
     },
 
     couscous_vegetables: {
+        category: "vegetables",
         title: "Légumes pour cousous",
         weight_value: 800,
         weight_unity: "g",
@@ -52,6 +55,7 @@ export default
     },
 
     pan_fried_planter: {
+        category: "vegetables",
         title: "La pêlée Jardinière",
         weight_value: 290,
         weight_unity: "g",

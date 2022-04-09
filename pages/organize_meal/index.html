@@ -57,31 +57,34 @@
       </div>
 
     <div style="max-width: 1280px;margin: 35px auto 0 auto;" class="container">
-        <h1>Organise tes repas de la journée</h1>
+        <h1 style="margin-bottom: 20px">Organise tes repas de la journée</h1>
 
         <div class="alert alert-secondary" role="alert" id="energy">
             0 kcal
         </div>
 
-        <ul class="nav nav-tabs" style="margin-bottom: 20px;">
+        <ul class="nav nav-tabs" style="margin-bottom: 20px;" role="tablist">
             <li class="nav-item">
-                <a class="nav-link" href="#">Viandes</a>
+                <button class="nav-link" id="meats-tab" data-bs-toggle="tab" data-bs-target="#meats" type="button" role="tab" aria-controls="meats" aria-selected="false">Viandes</button>
             </li>
             <li class="nav-item">
-                <a class="nav-link active" href="#">Féculents</a>
+                <button class="nav-link" id="fishes-tab" data-bs-toggle="tab" data-bs-target="#fishes" type="button" role="tab" aria-controls="fishes" aria-selected="false">Poissons</button>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Légumes</a>
+                <button class="nav-link active" id="starches-tab" data-bs-toggle="tab" data-bs-target="#starches" type="button" role="tab" aria-controls="starches" aria-selected="true">Féculents</button>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Produits laitiers</a>
+                <button class="nav-link" id="vegetables-tab" data-bs-toggle="tab" data-bs-target="#vegetables" type="button" role="tab" aria-controls="vegetables" aria-selected="false">Légumes</button>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Fruits</a>
+                <button class="nav-link" id="dairy-tab" data-bs-toggle="tab" data-bs-target="#dairy" type="button" role="tab" aria-controls="dairy" aria-selected="false">Produits laitiers</button>
+            </li>
+            <li class="nav-item">
+                <button class="nav-link" id="fruits-tab" data-bs-toggle="tab" data-bs-target="#fruits" type="button" role="tab" aria-controls="fruits" aria-selected="false">Fruits</button>
             </li>
         </ul>
 
-        <div id="cards" class="d-flex justify-content-center align-items-center" style="max-width: 1280px;">
+        <div id="cards" class="tab-content" style="max-width: 1280px;">
         </div>
 
         

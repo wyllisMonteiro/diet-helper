@@ -1,6 +1,7 @@
 export default
 {
   rice: {
+    category: "starches",
     title: "Riz complet",
     weight_value: 500,
     weight_unity: "g",
@@ -18,6 +19,7 @@ export default
   },
 
   cereales: {
+    category: "starches",
     title: "5 céréales BIO",
     weight_value: 300,
     weight_unity: "g",
