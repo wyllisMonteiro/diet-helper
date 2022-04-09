@@ -6,6 +6,7 @@ import starches from "../../foods/starches";
 import vegetables from "../../foods/vegetables";
 import dairy from "../../foods/dairy";
 import fruits from "../../foods/fruits";
+import foodSupplements from "../../foods/food_supplements";
 
 import { foodClicked, addPortionFoodButtonClicked, resetPortionFoodButtonClicked } from "./events";
 
@@ -16,6 +17,7 @@ const foods = {
     ...vegetables,
     ...dairy,
     ...fruits,
+    ...foodSupplements
 };
 
 const INDEX_CARD_TO_SHOW = Object.values(meats).length + Object.values(fishes).length;

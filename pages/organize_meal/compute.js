@@ -4,6 +4,7 @@ import starches from "../../foods/starches";
 import vegetables from "../../foods/vegetables";
 import dairy from "../../foods/dairy";
 import fruits from "../../foods/fruits";
+import foodSupplements from "../../foods/food_supplements";
 
 let selctedFoods = {};
 const foods = {
@@ -13,6 +14,7 @@ const foods = {
     ...vegetables,
     ...dairy,
     ...fruits,
+    ...foodSupplements
 };
 
 const getFoodQantity = (foodName) => {
