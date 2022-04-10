@@ -1,4 +1,4 @@
-import { getSelectedFoods, getFoodQantity, setFoodQuantity, computeEnergyFromSelectedFoods } from "./compute"
+import { getSelectedFoods, getFoodQantity, setFoodQuantity, computEnergiesFromSelectedFoods } from "./compute"
 import meats from "../../foods/meats";
 import fishes from "../../foods/fishes";
 import starches from "../../foods/starches";
@@ -34,12 +34,14 @@ function confirmAddPortionButtonClicked() {
     setFoodQuantity(foodNameWaitingToBeAdded, quantity);
     document.getElementById("quantity").value = quantity;
 
+    const addButton = document.querySelector(`.card-link-add[data-food='${foodNameWaitingToBeAdded}']`);
+
     if (quantity > 0) {
         const removeButton = document.querySelector(`.card-link-rm[data-food='${foodNameWaitingToBeAdded}']`);
         if (removeButton == null ) {
-            document.querySelector(`.card-link-add[data-food='${foodNameWaitingToBeAdded}']`).parentElement.innerHTML += `<a href="#" data-food='${foodNameWaitingToBeAdded}'] style="color: darkred;" class="card-link card-link-rm">Retirer</a>`;
-            document.querySelector(`.card-link-add[data-food='${foodNameWaitingToBeAdded}']`)
-                .addEventListener("click", addPortionClicked);
+            addButton.parentElement.innerHTML += 
+                `<a href="#" data-food='${foodNameWaitingToBeAdded}'] style="color: darkred;" class="card-link card-link-rm">Retirer</a>`;
+            addButton.addEventListener("click", addPortionClicked);
             document.querySelector(`.card-link-rm[data-food='${foodNameWaitingToBeAdded}']`)
                 .addEventListener("click", resetPortionClicked);
         }
@@ -59,11 +61,15 @@ function confirmAddPortionButtonClicked() {
         })
         document.getElementById("foods-list-items").innerHTML = foodsListElement;
     } else {
-        document.querySelector(`.card-link-add[data-food='${foodNameWaitingToBeAdded}']`).parentElement.parentElement.classList.remove("card-selected");
+        addButton.parentElement.parentElement.classList.remove("card-selected");
     }
 
-    const energy = computeEnergyFromSelectedFoods();
-    document.getElementById("energy").innerText = `${energy} kcal`;
+    const nutritionalValues = computEnergiesFromSelectedFoods();
+    document.getElementById("nutritionnal-values").innerText = 
+        `Energie : ${nutritionalValues.energy} kcal
+        Protéines : ${nutritionalValues.protein} g
+        Lipides : ${nutritionalValues.lipid} g
+        Glucides : ${nutritionalValues.carbohydrate} g`;
 }
 
 function confirmResetPortionButtonClicked() {
@@ -73,8 +79,12 @@ function confirmResetPortionButtonClicked() {
     document.querySelector(`.card-link-rm[data-food='${foodNameWaitingToBeAdded}'`).remove();
     document.querySelector(`#foods-list-items li[data-item-food="${foodNameWaitingToBeAdded}"]`).remove();
 
-    const energy = computeEnergyFromSelectedFoods();
-    document.getElementById("energy").innerText = `${energy} kcal`;
+    const nutritionalValues = computEnergiesFromSelectedFoods();
+    document.getElementById("nutritionnal-values").innerText = 
+        `Energie : ${nutritionalValues.energy} kcal
+        Protéines : ${nutritionalValues.protein} g
+        Lipides : ${nutritionalValues.lipid} g
+        Glucides : ${nutritionalValues.carbohydrate} g`;
 }
 
 export { addPortionClicked, resetPortionClicked, confirmAddPortionButtonClicked, confirmResetPortionButtonClicked }

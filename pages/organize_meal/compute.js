@@ -32,20 +32,29 @@ const setFoodQuantity = (foodName, quantity) => {
     }
 }
 
-const computeEnergyFromSelectedFoods = () => {
+const computEnergiesFromSelectedFoods = () => {
+    return {
+        energy: computeEnergyFromSelectedFoods("energy_value"),
+        protein: computeEnergyFromSelectedFoods("protein"),
+        lipid: computeEnergyFromSelectedFoods("lipid"),
+        carbohydrate: computeEnergyFromSelectedFoods("carbohydrate")
+    };
+}
+
+const computeEnergyFromSelectedFoods = (energy) => {
     const initialEnergy = 0;
     return Object.values(selctedFoods).reduce((accumulator, currentFood, index) => {
         const currentFoodQuantity = currentFood.quantity == null ? 0 : currentFood.quantity;
         const key = Object.keys(selctedFoods)[index];
-        const currentEnergy = computeFoodEnergy(foods[key], currentFoodQuantity);
+        const nutritionnalValues = foods[key].nutritional_values;
+        const currentEnergy = computeEnergyFromQuantity(nutritionnalValues[energy], nutritionnalValues.portion_value, currentFoodQuantity);
 
         return accumulator + currentEnergy
     }, initialEnergy)
 }
 
-const computeFoodEnergy = (food, quantity) => {
-    const nutritionalValues = food.nutritional_values;
-    return quantity * nutritionalValues.energy_value / nutritionalValues.portion_value;
+const computeEnergyFromQuantity = (energy, portion, quantity) => {
+    return quantity * energy / portion;
 }
 
-export { getSelectedFoods, getFoodQantity, setFoodQuantity, computeEnergyFromSelectedFoods, computeFoodEnergy }
+export { getSelectedFoods, getFoodQantity, setFoodQuantity, computEnergiesFromSelectedFoods }

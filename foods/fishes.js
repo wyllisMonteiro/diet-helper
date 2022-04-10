@@ -14,7 +14,7 @@ export default
       energy_unity: "kcal",
       protein: 16.6,
       lipid: 1.6,
-      carbohydrates: 0.5,
+      carbohydrate: 0.5,
     }
   },
 }

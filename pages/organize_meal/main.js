@@ -41,7 +41,7 @@ const addFoodToCard = (food, index, indexCardToShowFirst) => {
                 <p class="portion">Quantité : ${food.nutritional_values.portion_value} ${food.nutritional_values.portion_unity}</p>
                 <p class="pretein">Protéines : ${food.nutritional_values.protein} g</p>
                 <p class="lipid">Lipides : ${food.nutritional_values.lipid} g</p>
-                <p class="carbohydrate">Glucides : ${food.nutritional_values.carbohydrates} g</p>
+                <p class="carbohydrate">Glucides : ${food.nutritional_values.carbohydrate} g</p>
             </div>
             <a data-food="${foodName}" class="card-link card-link-show" data-bs-toggle="collapse" href="#${foodName}-food-details" role="button" aria-expanded="false" aria-controls="food-details">Détails</a>
             <a data-food="${foodName}" class="card-link card-link-add" data-bs-toggle="modal" data-bs-target="#modal-portion" role="button">Ajouter</a>
