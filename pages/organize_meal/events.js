@@ -1,4 +1,9 @@
-import { getSelectedFoods, getFoodQantity, setFoodQuantity, computEnergiesFromSelectedFoods } from "./compute"
+import { 
+    getSelectedFoods,
+    getFoodQantity, 
+    setFoodQuantity, 
+    computeEnergiesFromSelectedFoods
+} from "./compute";
 import meats from "../../foods/meats";
 import fishes from "../../foods/fishes";
 import starches from "../../foods/starches";
@@ -7,7 +12,7 @@ import dairy from "../../foods/dairy";
 import fruits from "../../foods/fruits";
 import foodSupplements from "../../foods/food_supplements";
 
-import { renderRemoveButtonToCard, renderNutritionalValues } from "./render";
+import { renderRemoveButtonToCard, renderNutritionalValues, renderFoodsList } from "./render";
 
 const foods = {
     ...meats,
@@ -48,24 +53,12 @@ function confirmAddPortionButtonClicked() {
         }
         
         document.querySelector(`.card-link-add[data-food='${foodNameWaitingToBeAdded}']`).parentElement.parentElement.classList.add("card-selected");
-        const selectedFoods = Object.values(getSelectedFoods());
-        let foodsListElement = "";
-        selectedFoods.forEach( food => {
-            if (food.quantity <= 0)
-                return;
-
-            const itemElement = document.querySelector(`#foods-list-items li[data-item-food="${food.name}"]`);
-            if (itemElement != null)
-                foodsListElement += "";
-    
-            foodsListElement += `<li data-item-food="${food.name}">${foods[food.name].title} - ${food.quantity} g</li>`;
-        })
-        document.getElementById("foods-list-items").innerHTML = foodsListElement;
+        filterClicked();
     } else {
         addButton.parentElement.parentElement.classList.remove("card-selected");
     }
 
-    const nutritionalValues = computEnergiesFromSelectedFoods();
+    const nutritionalValues = computeEnergiesFromSelectedFoods();
     document.getElementById("nutritionnal-values").innerText = renderNutritionalValues(nutritionalValues);
 }
 
@@ -75,9 +68,18 @@ function confirmResetPortionButtonClicked() {
     document.querySelector(`.card-link-add[data-food='${foodNameWaitingToBeAdded}']`).parentElement.parentElement.classList.remove("card-selected");
     document.querySelector(`.card-link-rm[data-food='${foodNameWaitingToBeAdded}'`).remove();
     document.querySelector(`#foods-list-items li[data-item-food="${foodNameWaitingToBeAdded}"]`).remove();
+    const listElement = document.querySelector(`#foods-list-items ul[data-item-food="${foodNameWaitingToBeAdded}"]`);
+    if (listElement)
+        listElement.remove();
 
-    const nutritionalValues = computEnergiesFromSelectedFoods();
+    const nutritionalValues = computeEnergiesFromSelectedFoods();
     document.getElementById("nutritionnal-values").innerText = renderNutritionalValues(nutritionalValues);
 }
 
-export { addPortionClicked, resetPortionClicked, confirmAddPortionButtonClicked, confirmResetPortionButtonClicked }
+function filterClicked() {
+    const selectedFoods = Object.values(getSelectedFoods());
+    const foodsListElement = renderFoodsList(selectedFoods);
+    document.getElementById("foods-list-items").innerHTML = foodsListElement;
+}
+
+export { addPortionClicked, resetPortionClicked, confirmAddPortionButtonClicked, confirmResetPortionButtonClicked, filterClicked }

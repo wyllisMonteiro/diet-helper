@@ -8,7 +8,7 @@ import dairy from "../../foods/dairy";
 import fruits from "../../foods/fruits";
 import foodSupplements from "../../foods/food_supplements";
 
-import { addPortionClicked, confirmAddPortionButtonClicked, confirmResetPortionButtonClicked } from "./events";
+import { addPortionClicked, confirmAddPortionButtonClicked, confirmResetPortionButtonClicked, filterClicked } from "./events";
 import { renderActiveTab, renderTab, renderCard } from "./render";
 
 const foods = {
@@ -51,3 +51,8 @@ addPortionFoodModalButton.addEventListener("click", confirmAddPortionButtonClick
 
 const resetPortionFoodModalButton = document.getElementById("reset-portion");
 resetPortionFoodModalButton.addEventListener("click", confirmResetPortionButtonClicked);
+
+const filters = document.querySelectorAll(".filter");
+filters.forEach(filter => {
+    filter.addEventListener("click", filterClicked);
+})

@@ -32,9 +32,9 @@ const setFoodQuantity = (foodName, quantity) => {
     }
 }
 
-const computEnergiesFromSelectedFoods = () => {
+const computeEnergiesFromSelectedFoods = () => {
     return {
-        energy: computeEnergyFromSelectedFoods("energy_value"),
+        energy: computeEnergyFromSelectedFoods("energy"),
         protein: computeEnergyFromSelectedFoods("protein"),
         lipid: computeEnergyFromSelectedFoods("lipid"),
         carbohydrate: computeEnergyFromSelectedFoods("carbohydrate")
@@ -53,8 +53,13 @@ const computeEnergyFromSelectedFoods = (energy) => {
     }, initialEnergy)
 }
 
-const computeEnergyFromQuantity = (energy, portion, quantity) => {
-    return quantity * energy / portion;
+const computeEnergyFromSelectedFood = (foodName, energyName, currentFoodQuantity) => {
+    const nutritionnalValues = foods[foodName].nutritional_values;
+    return computeEnergyFromQuantity(nutritionnalValues[energyName], nutritionnalValues.portion_value, currentFoodQuantity);
 }
 
-export { getSelectedFoods, getFoodQantity, setFoodQuantity, computEnergiesFromSelectedFoods }
+const computeEnergyFromQuantity = (energyValue, portion, quantity) => {
+    return quantity * energyValue / portion;
+}
+
+export { getSelectedFoods, getFoodQantity, setFoodQuantity, computeEnergiesFromSelectedFoods, computeEnergyFromSelectedFood }
