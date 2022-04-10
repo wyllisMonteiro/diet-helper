@@ -17,12 +17,17 @@ const foods = {
     ...foodSupplements
 };
 
+const getSelectedFoods = () => {
+    return selctedFoods;
+}
+
 const getFoodQantity = (foodName) => {
     return selctedFoods[foodName] == null ? 0 : selctedFoods[foodName].quantity;
 }
 
 const setFoodQuantity = (foodName, quantity) => {
     selctedFoods[foodName] = {
+        name: foodName,
         quantity: quantity
     }
 }
@@ -43,4 +48,4 @@ const computeFoodEnergy = (food, quantity) => {
     return quantity * nutritionalValues.energy_value / nutritionalValues.portion_value;
 }
 
-export { getFoodQantity, setFoodQuantity, computeEnergyFromSelectedFoods, computeFoodEnergy }
+export { getSelectedFoods, getFoodQantity, setFoodQuantity, computeEnergyFromSelectedFoods, computeFoodEnergy }
