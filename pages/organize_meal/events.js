@@ -59,7 +59,7 @@ function confirmAddPortionButtonClicked() {
     }
 
     const nutritionalValues = computeEnergiesFromSelectedFoods();
-    document.getElementById("nutritionnal-values").innerText = renderNutritionalValues(nutritionalValues);
+    document.getElementById("nutritionnal-values").innerHTML = renderNutritionalValues(nutritionalValues);
 }
 
 function confirmResetPortionButtonClicked() {
@@ -73,7 +73,7 @@ function confirmResetPortionButtonClicked() {
         listElement.remove();
 
     const nutritionalValues = computeEnergiesFromSelectedFoods();
-    document.getElementById("nutritionnal-values").innerText = renderNutritionalValues(nutritionalValues);
+    document.getElementById("nutritionnal-values").innerHTML = renderNutritionalValues(nutritionalValues);
 }
 
 function filterClicked() {

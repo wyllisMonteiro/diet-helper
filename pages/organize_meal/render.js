@@ -10,6 +10,8 @@ import {
     computeEnergyFromSelectedFood
 } from "./compute";
 
+import profiles from "../../profiles/profile";
+
 const foods = {
     ...meats,
     ...fishes,
@@ -50,10 +52,17 @@ const renderRemoveButtonToCard = foodName => {
 }
 
 const renderNutritionalValues = nutritionalValues => {
-    return `Energie : ${nutritionalValues.energy} kcal
-        Protéines : ${nutritionalValues.protein} g
-        Lipides : ${nutritionalValues.lipid} g
-        Glucides : ${nutritionalValues.carbohydrate} g`;
+    const profile = profiles["wyllis"];
+    return `<h4>Valeurs nutritionnelles des aliments sélectionnés</h4>
+        Energie : ${nutritionalValues.energy} kcal <br>
+        Protéines : ${nutritionalValues.protein} g <br>
+        Lipides : ${nutritionalValues.lipid} g <br>
+        Glucides : ${nutritionalValues.carbohydrate} g <br>
+        <h4>Valeurs nutritionnelles de ${Object.keys(profiles)[0]}</h4>
+        Energie : ${profile.energy} kcal <br>
+        Protéines : ${profile.protein} g <br>
+        Lipides : ${profile.lipid} g <br>
+        Glucides : ${profile.carbohydrate} g`;
 }
 
 const frEquivalent = {
