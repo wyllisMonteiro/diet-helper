@@ -7,6 +7,8 @@ import dairy from "../../foods/dairy";
 import fruits from "../../foods/fruits";
 import foodSupplements from "../../foods/food_supplements";
 
+import { renderRemoveButtonToCard, renderNutritionalValues } from "./render";
+
 const foods = {
     ...meats,
     ...fishes,
@@ -39,8 +41,7 @@ function confirmAddPortionButtonClicked() {
     if (quantity > 0) {
         const removeButton = document.querySelector(`.card-link-rm[data-food='${foodNameWaitingToBeAdded}']`);
         if (removeButton == null ) {
-            addButton.parentElement.innerHTML += 
-                `<a href="#" data-food='${foodNameWaitingToBeAdded}'] style="color: darkred;" class="card-link card-link-rm">Retirer</a>`;
+            addButton.parentElement.innerHTML += renderRemoveButtonToCard(foodNameWaitingToBeAdded);
             addButton.addEventListener("click", addPortionClicked);
             document.querySelector(`.card-link-rm[data-food='${foodNameWaitingToBeAdded}']`)
                 .addEventListener("click", resetPortionClicked);
@@ -65,11 +66,7 @@ function confirmAddPortionButtonClicked() {
     }
 
     const nutritionalValues = computEnergiesFromSelectedFoods();
-    document.getElementById("nutritionnal-values").innerText = 
-        `Energie : ${nutritionalValues.energy} kcal
-        Protéines : ${nutritionalValues.protein} g
-        Lipides : ${nutritionalValues.lipid} g
-        Glucides : ${nutritionalValues.carbohydrate} g`;
+    document.getElementById("nutritionnal-values").innerText = renderNutritionalValues(nutritionalValues);
 }
 
 function confirmResetPortionButtonClicked() {
@@ -80,11 +77,7 @@ function confirmResetPortionButtonClicked() {
     document.querySelector(`#foods-list-items li[data-item-food="${foodNameWaitingToBeAdded}"]`).remove();
 
     const nutritionalValues = computEnergiesFromSelectedFoods();
-    document.getElementById("nutritionnal-values").innerText = 
-        `Energie : ${nutritionalValues.energy} kcal
-        Protéines : ${nutritionalValues.protein} g
-        Lipides : ${nutritionalValues.lipid} g
-        Glucides : ${nutritionalValues.carbohydrate} g`;
+    document.getElementById("nutritionnal-values").innerText = renderNutritionalValues(nutritionalValues);
 }
 
 export { addPortionClicked, resetPortionClicked, confirmAddPortionButtonClicked, confirmResetPortionButtonClicked }
