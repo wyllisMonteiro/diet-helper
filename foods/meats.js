@@ -10,7 +10,7 @@ export default
     nutritional_values: {
       portion_value: 100,
       portion_unity: "g",
-      energy_value: 129,
+      energy: 129,
       energy_unity: "kcal",
       protein: 21,
       lipid: 5,
