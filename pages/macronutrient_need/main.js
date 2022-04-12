@@ -1,5 +1,5 @@
 import './style.css'
-import { computeButtonClicked } from "./events"
+import { computeButtonClicked } from './events'
 
-const computeBtn = document.getElementById("compute-btn");
-computeBtn.addEventListener("click", computeButtonClicked);
+const computeBtn = document.getElementById('compute-btn')
+computeBtn.addEventListener('click', computeButtonClicked)
