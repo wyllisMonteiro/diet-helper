@@ -1,0 +1,27 @@
+.card-selected {
+    background-color: #cfe2ff;
+}
+
+#cards .active {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.card {
+    margin: 10px;
+}
+
+#foods-list {
+    margin-top: 10px;
+    min-height: 200px;
+    text-align: center;
+    border: 1px solid #e2e3e5;
+    border-radius: 0.25rem;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+#foods-list-items {
+    text-align: left;
+}
