@@ -2,6 +2,7 @@ import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 import CaloricNeedView from '../views/CaloricNeedView.vue'
 import MacroNutrientsNeedView from '../views/MacroNutrientsNeedView.vue'
+import OrganizeMealView from '../views/OrganizeMealView.vue'
 
 const routes: Array<RouteRecordRaw> = [
   {
@@ -18,6 +19,11 @@ const routes: Array<RouteRecordRaw> = [
     path: '/macronutrients-need',
     name: 'macronutrients-need',
     component: MacroNutrientsNeedView
+  },
+  {
+    path: '/organize-meal',
+    name: 'organize-meal',
+    component: OrganizeMealView
   }
 ]
 
