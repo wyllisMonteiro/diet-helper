@@ -8,16 +8,16 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#">Accueil</a>
+            <router-link to="/" class="nav-link">Accueil</router-link>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/pages/caloric_need/index.html">Besoin calorique</a>
+            <router-link to="/caloric-need" class="nav-link">Besoin calorique</router-link>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/pages/macronutrient_need/index.html">Besoin macro-nutriments</a>
+            <router-link to="/macronutrients-need" class="nav-link">Besoin macro-nutriments</router-link>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/pages/organize_meal/index.html">Organise tes repas</a>
+            <router-link to="/organize-meal" class="nav-link">Organise tes repas</router-link>
           </li>
         </ul>
       </div>
