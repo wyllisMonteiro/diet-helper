@@ -1,14 +1,13 @@
-import { createStore } from 'vuex'
+import { createStore, createLogger } from 'vuex'
+
+import CaloricNeed from './modules/CaloricNeed/index'
+
+const debug = process.env.NODE_ENV !== 'production'
 
 export default createStore({
-  state: {
-  },
-  getters: {
-  },
-  mutations: {
-  },
-  actions: {
-  },
   modules: {
-  }
+    CaloricNeed
+  },
+  strict: debug,
+  plugins: debug ? [createLogger()] : []
 })

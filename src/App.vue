@@ -16,4 +16,9 @@ export default class App extends Vue {}
 </script>
 
 <style lang="scss">
+#app {
+  height: 100vh;
+  background: url('~@/assets/bg.png') no-repeat;
+  background-size: cover;
+}
 </style>
