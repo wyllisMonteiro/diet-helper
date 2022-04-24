@@ -45,4 +45,31 @@ const computeWeightGainCaloricNeed = (caloricNeed: number) => {
   return caloricNeed + caloricNeed * 15 / 100
 }
 
-export { computeBMR, computeCoeffActivity, computeDryMassNeedCaloricNeed, computeWeightGainCaloricNeed }
+const computeProtein = (weight: number) => {
+  if (weight < MIN_WEIGHT || weight > MAX_WEIGHT) { throw new Error(`Poids doit être compris entre ${MIN_WEIGHT} et ${MAX_WEIGHT} kg`) }
+
+  return 2 * weight
+}
+
+const computeLipid = (weight: number) => {
+  if (weight < MIN_WEIGHT || weight > MAX_WEIGHT) { throw new Error(`Poids doit être compris entre ${MIN_WEIGHT} et ${MAX_WEIGHT} kg`) }
+
+  return 1 * weight
+}
+
+const computeCarbohydrate = (protein: number, lipid: number, caloricNeed: number) => {
+  const proteinKCAL = protein * 4 // 1g de protéine = 4kcal
+  const lipidKCAL = lipid * 9 // 1g de lipide = 9kcal
+  const carbohydrateKCAL = caloricNeed - (proteinKCAL + lipidKCAL)
+  return carbohydrateKCAL / 4 // 1g de glucide = 4kcal
+}
+
+export {
+  computeBMR,
+  computeCoeffActivity,
+  computeDryMassNeedCaloricNeed,
+  computeWeightGainCaloricNeed,
+  computeProtein,
+  computeLipid,
+  computeCarbohydrate
+}

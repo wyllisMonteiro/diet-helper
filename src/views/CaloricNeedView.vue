@@ -10,7 +10,7 @@
       <form>
         <InputTextList :items="inputTextItems" />
         <InputRadioList :items="inputRadioItems" />
-        <button class="btn btn-primary" id="compute-btn" @click.prevent="displayCaloricNeed">Calculer</button>
+        <button class="btn btn-primary" @click.prevent="displayCaloricNeed">Calculer</button>
       </form>
 
       <Alert :alertClass="alertCaloricNeedClass" >

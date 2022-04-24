@@ -1,35 +1,83 @@
 <template>
   <div class="macronutrients-need-view">
     <div style="max-width: 1280px;margin: 35px auto 0 auto;" class="container">
-        <h1>Besoin en macro-nutriments</h1>
+      <h1>Besoin en macro-nutriments</h1>
+      <Alert :alertClass="alertErrorClass">
+        Une erreur est survenue
+      </Alert>
 
-        <div class="alert alert-danger" role="alert" id="error-compute">
-        </div>
+      <form>
+        <InputTextList :items="inputTextItems" />
+        <button class="btn btn-primary" @click.prevent="displayCaloricNeed">Calculer</button>
+      </form>
 
-        <form>
-            <div class="mb-2">
-            <label for="weight" class="form-label">Poids (kg)</label>
-            <input type="number" class="form-control" id="weight" value="77">
-            </div>
-            <div class="mb-2">
-            <label for="caloric-need" class="form-label">Nombre de kcal par jour (kcal)</label>
-            <input type="number" class="form-control" id="caloric-need" value="1900">
-            </div>
-            <button class="btn btn-primary" id="compute-btn">Calculer</button>
-        </form>
-
-        <div class="alert alert-primary" role="alert" id="macronutrient-need">
-        </div>
+      <Alert :alertClass="alertCaloricNeedClass" >
+        <span>Protéines : {{ protein }} g</span><br>
+        <span>Lipides : {{ lipid }} g</span><br>
+        <span>Glucides : {{ carbohydrate }} g</span>
+      </Alert>
     </div>
   </div>
 </template>
 
 <script lang="ts">
 import { Options, Vue } from 'vue-class-component'
+import { mapGetters } from 'vuex'
+
+import Alert from '../components/Alert.vue'
+import InputTextList from '../components/MacroNutrientsNeed/InputTextList.vue'
+
+import { MacroNutrientsNeedFields } from '../domain/store/MacroNutrientsNeedState'
+import InputText from '../domain/MacroNutrientsNeed/InputText'
+
+import {
+  computeProtein,
+  computeLipid,
+  computeCarbohydrate
+} from '../utils/compute'
 
 @Options({
   components: {
+    Alert,
+    InputTextList
+  },
+  computed: {
+    ...mapGetters(
+      {
+        fields: 'MacroNutrientsNeed/fields'
+      }
+    )
   }
 })
-export default class MacroNutrientsNeedView extends Vue {}
+export default class MacroNutrientsNeedView extends Vue {
+  fields!: MacroNutrientsNeedFields
+  inputTextItems: InputText[] = [
+    {
+      label: 'Poids (kg)',
+      id: 'weight'
+    },
+    {
+      label: 'Nombre de kcal par jour (kg)',
+      id: 'caloric_need'
+    }
+  ]
+
+  alertCaloricNeedClass = 'alert alert-primary'
+  alertErrorClass = 'alert alert-danger'
+  protein = 0
+  lipid = 0
+  carbohydrate = 0
+
+  displayCaloricNeed (): void {
+    try {
+      this.protein = computeProtein(this.fields.weight)
+      this.lipid = computeLipid(this.fields.weight)
+      this.carbohydrate = computeCarbohydrate(this.protein, this.lipid, this.fields.caloric_need)
+
+      this.alertCaloricNeedClass = 'alert alert-primary display-alert'
+    } catch (ex) {
+      this.alertErrorClass = 'alert alert-danger display-alert'
+    }
+  }
+}
 </script>

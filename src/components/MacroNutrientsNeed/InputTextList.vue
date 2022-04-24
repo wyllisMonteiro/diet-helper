@@ -1,6 +1,6 @@
 <template>
-  <div class="mb-3" v-for="(item, index) in items" :key="index">
-    <InputTextItem :label="item" />
+  <div class="mb-2" v-for="(item, index) in items" :key="index">
+    <InputTextItem :item="item" />
   </div>
 </template>
 
@@ -8,17 +8,18 @@
 import { Options, Vue } from 'vue-class-component'
 
 import InputTextItem from './InputTextItem.vue'
+import InputText from '../../domain/MacroNutrientsNeed/InputText'
 
 @Options({
   components: {
     InputTextItem
   },
   props: {
-    items: Array<string>()
+    items: Array<InputText>()
   }
 })
 export default class InputTextList extends Vue {
-  items!: Array<string>
+  items!: Array<InputText>
 }
 </script>
 

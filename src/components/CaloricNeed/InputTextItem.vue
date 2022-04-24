@@ -1,14 +1,14 @@
 <template>
-    <label :for="label" class="form-label">{{ capitalizeFirstLetter(label) }}</label>
-    <input
-      type="number"
-      class="form-control"
-      :id="label"
-      v-model="value"
-      @keyup="setField({
-        field: label,
-        value: value
-      })">
+  <label :for="label" class="form-label">{{ capitalizeFirstLetter(label) }}</label>
+  <input
+    type="number"
+    class="form-control"
+    :id="label"
+    v-model="value"
+    @keyup="setField({
+      field: label,
+      value: value
+    })">
 </template>
 
 <script lang="ts">

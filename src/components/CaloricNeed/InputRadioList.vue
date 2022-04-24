@@ -18,7 +18,7 @@
 import { Options, Vue } from 'vue-class-component'
 import { mapActions } from 'vuex'
 
-import InputRadioItem from '../Forms/InputRadioItem.vue'
+import InputRadioItem from './InputRadioItem.vue'
 import InputRadio from '../../domain/Forms/InputRadio'
 
 @Options({
