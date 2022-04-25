@@ -7,7 +7,7 @@
       </Alert>
 
       <form>
-        <InputTextList :items="inputTextItems" />
+        <InputTextList :items="inputTextItemsData" />
         <button class="btn btn-primary" @click.prevent="displayCaloricNeed">Calculer</button>
       </form>
 
@@ -28,7 +28,8 @@ import Alert from '../components/Alert.vue'
 import InputTextList from '../components/MacroNutrientsNeed/InputTextList.vue'
 
 import { MacroNutrientsNeedFields } from '../domain/store/MacroNutrientsNeedState'
-import InputText from '../domain/MacroNutrientsNeed/InputText'
+
+import { inputTextItemsData } from '../data/MacroNutrientNeed'
 
 import {
   computeProtein,
@@ -51,16 +52,7 @@ import {
 })
 export default class MacroNutrientsNeedView extends Vue {
   fields!: MacroNutrientsNeedFields
-  inputTextItems: InputText[] = [
-    {
-      label: 'Poids (kg)',
-      id: 'weight'
-    },
-    {
-      label: 'Nombre de kcal par jour (kg)',
-      id: 'caloric_need'
-    }
-  ]
+  inputTextItemsData = inputTextItemsData
 
   alertCaloricNeedClass = 'alert alert-primary'
   alertErrorClass = 'alert alert-danger'

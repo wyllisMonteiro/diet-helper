@@ -8,8 +8,8 @@
       <GenderCardsList />
 
       <form>
-        <InputTextList :items="inputTextItems" />
-        <InputRadioList :items="inputRadioItems" />
+        <InputTextList :items="inputTextItemsData" />
+        <InputRadioList :items="inputRadioItemsData" />
         <button class="btn btn-primary" @click.prevent="displayCaloricNeed">Calculer</button>
       </form>
 
@@ -33,6 +33,8 @@ import InputTextList from '../components/CaloricNeed/InputTextList.vue'
 import InputRadioList from '../components/CaloricNeed/InputRadioList.vue'
 
 import { CaloricNeedFields } from '../domain/store/CaloricNeedState'
+import { inputTextItemsData, inputRadioItemsData } from '../data/CaloricNeed'
+import { InputRadio } from '../domain/CaloricNeed'
 
 @Options({
   components: {
@@ -55,40 +57,8 @@ export default class CaloricNeedView extends Vue {
   selectedCardIndex!: number
   activityName!: string
   fields!: CaloricNeedFields
-
-  inputTextItems = [
-    'age',
-    'weight',
-    'size'
-  ]
-
-  inputRadioItems = [
-    {
-      label: 'Aucune activité sportive',
-      defaultValue: 'no',
-      id: 'no-sports-activity'
-    },
-    {
-      label: '1 à 3 fois par semaine (intensité faible)',
-      defaultValue: 'low',
-      id: 'low-sports-activity'
-    },
-    {
-      label: '3 à 5 fois par semaine (intensité modéré)',
-      defaultValue: 'medium',
-      id: 'medium-sports-activity'
-    },
-    {
-      label: '6 fois par semaine (forte intensité)',
-      defaultValue: 'strong',
-      id: 'strong-sports-activity'
-    },
-    {
-      label: 'Athlète professionnel (forte intensité)',
-      defaultValue: 'extreme',
-      id: 'extreme-sports-activity'
-    }
-  ]
+  inputTextItemsData: string[] = inputTextItemsData
+  inputRadioItemsData: InputRadio[] = inputRadioItemsData
 
   alertCaloricNeedClass = 'alert alert-primary'
   alertErrorClass = 'alert alert-danger'

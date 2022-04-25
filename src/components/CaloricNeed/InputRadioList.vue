@@ -19,7 +19,7 @@ import { Options, Vue } from 'vue-class-component'
 import { mapActions } from 'vuex'
 
 import InputRadioItem from './InputRadioItem.vue'
-import InputRadio from '../../domain/Forms/InputRadio'
+import { InputRadio } from '../../domain/CaloricNeed'
 
 @Options({
   components: {

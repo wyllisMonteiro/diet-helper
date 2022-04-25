@@ -64,6 +64,8 @@ const computeCarbohydrate = (protein: number, lipid: number, caloricNeed: number
   return carbohydrateKCAL / 4 // 1g de glucide = 4kcal
 }
 
+const computeNutrientFromQuantity = (nutrientValue: number, baseQuantity: number, quantity: number) => quantity * nutrientValue / baseQuantity
+
 export {
   computeBMR,
   computeCoeffActivity,
@@ -71,5 +73,6 @@ export {
   computeWeightGainCaloricNeed,
   computeProtein,
   computeLipid,
-  computeCarbohydrate
+  computeCarbohydrate,
+  computeNutrientFromQuantity
 }
