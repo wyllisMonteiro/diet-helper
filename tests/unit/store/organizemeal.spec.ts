@@ -1,6 +1,6 @@
-import { state } from './data/state'
-import mutations from './data/mutations'
-import getters from './data/getters'
+import { state } from './data/OrganizeMeal/state'
+import getters from './data/OrganizeMeal/getters'
+import mutations from './data/OrganizeMeal/mutations'
 
 describe('getters', () => {
   it('selectedFoods : empty array', () => {
