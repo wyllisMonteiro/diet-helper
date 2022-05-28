@@ -31,3 +31,33 @@ describe('getters', () => {
     expect(field).toEqual(expectedValue)
   })
 })
+
+describe('mutations', () => {
+  it('SET_FIELD_VALUE : value 1', () => {
+    const expectedField = 'caloric_need'
+    const expectedValue = 1
+
+    expect(state.fields.caloric_need).toEqual(5)
+
+    mutations.SET_FIELD_VALUE(state, {
+      field: expectedField,
+      value: expectedValue
+    })
+
+    expect(state.fields.caloric_need).toEqual(expectedValue)
+  })
+
+  it('SET_FIELD_VALUE : value 4', () => {
+    const expectedField = 'caloric_need'
+    const expectedValue = 4
+
+    expect(state.fields.caloric_need).toEqual(1)
+
+    mutations.SET_FIELD_VALUE(state, {
+      field: expectedField,
+      value: expectedValue
+    })
+
+    expect(state.fields.caloric_need).toEqual(expectedValue)
+  })
+})
