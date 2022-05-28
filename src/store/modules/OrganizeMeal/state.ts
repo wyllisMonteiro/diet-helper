@@ -1,5 +1,5 @@
 export default {
-  selctedFoods: [],
+  selectedFoods: [],
   currentFood: {},
   nutrients: {
     energy: 0,

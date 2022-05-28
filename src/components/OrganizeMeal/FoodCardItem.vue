@@ -11,7 +11,7 @@
       </div>
       <a class="card-link card-link-show" data-bs-toggle="collapse" :href="setCollapseHref(food.name)" role="button" aria-expanded="false" aria-controls="food-details">Détails</a>
       <a class="card-link card-link-add" data-bs-toggle="modal" data-bs-target="#modal-portion" role="button" @click="setCurrentFood(food)">Ajouter</a>
-      <a style="color: darkred;" class="card-link" v-show="displayRemoveBtn" @click="removeCurrentFood(food)">Retirer</a>
+      <a style="color: darkred;" class="card-link card-link-rm" v-show="displayRemoveBtn" @click="removeCurrentFood(food)">Retirer</a>
     </div>
   </div>
 </template>
@@ -32,7 +32,7 @@ import { SelectedFood } from '../../domain/store/OrganizeMealState'
 
   computed: {
     ...mapGetters({
-      selctedFoods: 'OrganizeMeal/selctedFoods'
+      selectedFoods: 'OrganizeMeal/selectedFoods'
     })
   },
 
@@ -45,12 +45,12 @@ import { SelectedFood } from '../../domain/store/OrganizeMealState'
 })
 export default class FoodCardItem extends Vue {
   category!: FoodCategory
-  selctedFoods!: SelectedFood[]
+  selectedFoods!: SelectedFood[]
 
   displayRemoveBtn = false
 
   setCardClass (food: Food) {
-    const isFoodSelected = this.selctedFoods.filter(item => item.food.name === food.name).length >= 1
+    const isFoodSelected = this.selectedFoods.filter(item => item.food.name === food.name).length >= 1
 
     if (isFoodSelected) {
       this.displayRemoveBtn = true

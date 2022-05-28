@@ -20,8 +20,8 @@ export interface NutrientFilters {
 }
 
 export interface OrganizeMealState {
-  selctedFoods: SelectedFood[],
+  selectedFoods: SelectedFood[],
   currentFood: Food,
-  nutrients: Nutrients
+  nutrients: Nutrients,
   activeFilters: NutrientFilters
 }

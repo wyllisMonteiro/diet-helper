@@ -3,15 +3,15 @@ import { Food } from '../../../domain/food'
 
 export default {
   SET_FOOD_QUANTITY (state: OrganizeMealState, param: SelectedFood) {
-    for (let index = 0; index < Object.values(state.selctedFoods).length; index++) {
-      const food = state.selctedFoods[index]
+    for (let index = 0; index < Object.values(state.selectedFoods).length; index++) {
+      const food = state.selectedFoods[index]
       if (food.food.name === param.food.name) {
-        state.selctedFoods[index].quantity = param.quantity
+        state.selectedFoods[index].quantity = param.quantity
         return
       }
     }
 
-    state.selctedFoods.push({
+    state.selectedFoods.push({
       food: param.food,
       quantity: param.quantity
     })
@@ -22,7 +22,7 @@ export default {
   },
 
   REMOVE_CURRENT_FOOD (state: OrganizeMealState, food: Food) {
-    state.selctedFoods = state.selctedFoods.filter(item => item.food.name !== food.name)
+    state.selectedFoods = state.selectedFoods.filter(item => item.food.name !== food.name)
   },
 
   SET_FILTER (state: OrganizeMealState, filterName: string) {

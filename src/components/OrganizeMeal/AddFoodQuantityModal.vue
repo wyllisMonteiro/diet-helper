@@ -1,9 +1,9 @@
 <template>
-  <div class="modal fade" id="modal-portion" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="modal-portion-label" aria-hidden="true">
+  <div class="modal fade" id="modal-quantity" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="modal-portion-label" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="modal-portion-label">Quantité (g)</h5>
+          <h5 class="modal-title" id="modal-quantity-label">Quantité (g)</h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" @click="cleanCurrentFood()"></button>
         </div>
         <div class="modal-body">
@@ -27,13 +27,14 @@
 import { Options, Vue } from 'vue-class-component'
 import { mapActions, mapGetters } from 'vuex'
 
-import { Nutrients } from '../../domain/store/OrganizeMealState'
+import { Food } from '../../domain/food'
+import { SelectedFood, Nutrients } from '../../domain/store/OrganizeMealState'
 
 @Options({
   computed: {
     ...mapGetters({
       currentFood: 'OrganizeMeal/currentFood',
-      selctedFoods: 'OrganizeMeal/selctedFoods',
+      selectedFoods: 'OrganizeMeal/selectedFoods',
       nutrients: 'OrganizeMeal/nutrients'
     })
   },
@@ -44,19 +45,6 @@ import { Nutrients } from '../../domain/store/OrganizeMealState'
     }),
 
     addQuantity () {
-      if (this.quantity > 0) {
-        // const removeButton = document.querySelector(`.card-link-rm[data-food='${foodNameWaitingToBeAdded}']`)
-        // if (removeButton == null) {
-        // addButton.parentElement.innerHTML += renderRemoveButtonToCard(foodNameWaitingToBeAdded)
-        // }
-
-        // document.querySelector(`.card-link-add[data-food='${foodNameWaitingToBeAdded}']`).parentElement.parentElement.classList.add('card-selected')
-        // filterClicked()
-      } else {
-        // addButton.parentElement.parentElement.classList.remove('card-selected')
-      }
-
-      // const nutritionalValues = computeEnergiesFromSelectedFoods()
       this.setFoodQuantity({
         food: this.currentFood,
         quantity: this.quantity
@@ -65,6 +53,8 @@ import { Nutrients } from '../../domain/store/OrganizeMealState'
   }
 })
 export default class AddFoodQuantityModal extends Vue {
+  currentFood!: Food
+  selectedFoods!: SelectedFood[]
   nutrients!: Nutrients
 
   quantity = 0

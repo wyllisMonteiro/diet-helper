@@ -3,7 +3,7 @@ import { computeNutrientFromQuantity } from '../../../utils/compute'
 
 function nutrientsFromSelectedFoods (state: OrganizeMealState, nutrientName: string) {
   const initialNutrient = 0
-  return state.selctedFoods.reduce((accumulator, currentFood) => {
+  return state.selectedFoods.reduce((accumulator, currentFood) => {
     const currentFoodQuantity = currentFood.quantity == null ? 0 : currentFood.quantity
     const nutritionnalValues = currentFood.food.nutritionalValues
 
@@ -30,7 +30,7 @@ function nutrientsFromSelectedFoods (state: OrganizeMealState, nutrientName: str
 }
 
 export default {
-  selctedFoods: (state: OrganizeMealState) => state.selctedFoods,
+  selectedFoods: (state: OrganizeMealState) => state.selectedFoods,
   currentFood: (state: OrganizeMealState) => state.currentFood,
   nutrients: (state: OrganizeMealState) => {
     return {

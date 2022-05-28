@@ -19,11 +19,11 @@ import { SelectedFood } from '../../domain/store/OrganizeMealState'
   },
   computed: {
     ...mapGetters({
-      selectedFoods: 'OrganizeMeal/selctedFoods'
+      selectedFoods: 'OrganizeMeal/selectedFoods'
     })
   }
 })
 export default class SelectedFoodList extends Vue {
-  selctedFoods!: SelectedFood[]
+  selectedFoods!: SelectedFood[]
 }
 </script>
