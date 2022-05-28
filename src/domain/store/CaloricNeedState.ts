@@ -13,6 +13,11 @@ export interface FieldParam {
   value: number
 }
 
+export interface FieldParamActivity {
+  activityName: string,
+  activityIndex: number
+}
+
 export interface CaloricNeedState {
   selectedCardIndex: number,
   activityName: string,
