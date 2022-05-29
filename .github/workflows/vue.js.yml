@@ -32,6 +32,8 @@ jobs:
     - run: npm run test:unit
 
   deploy:
+    runs-on: ubuntu-latest
+    
     needs: build
     if: github.ref == 'refs/heads/ci-1'
     steps:
