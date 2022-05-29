@@ -33,16 +33,14 @@ jobs:
 
   deploy:
     runs-on: ubuntu-latest
-    
+
     needs: build
     if: github.ref == 'refs/heads/ci-1'
     steps:
     - name: Deploy to Server
-      uses: easingthemes/ssh-deploy@main
+      uses: appleboy/ssh-action@master
       env:
-        SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
-        ARGS: "-rltgoDzvO"
-        SOURCE: "dist/"
-        REMOTE_HOST: ${{ secrets.REMOTE_HOST }}
-        REMOTE_USER: ${{ secrets.REMOTE_USER }}
-        EXCLUDE: "/dist/, /node_modules/"
+        host: ${{ secrets.REMOTE_HOST }}
+        username: ${{ secrets.REMOTE_USER }}
+        key: ${{ secrets.SSH_PRIVATE_KEY }}
+        script: whoami
