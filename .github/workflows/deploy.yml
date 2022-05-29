@@ -3,7 +3,7 @@ name: Deploy CI
 on:
   workflow_run:
     workflows: Vue.js CI
-    branches: master
+    branches: ci-1
     types: completed
 
 jobs:
