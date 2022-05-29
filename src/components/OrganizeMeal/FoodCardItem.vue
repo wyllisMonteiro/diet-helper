@@ -10,7 +10,7 @@
         <p class="carbohydrate">Glucides : {{ food.nutritionalValues.carbohydrate }} g</p>
       </div>
       <a class="card-link card-link-show" data-bs-toggle="collapse" :href="setCollapseHref(food.name)" role="button" aria-expanded="false" aria-controls="food-details">Détails</a>
-      <a class="card-link card-link-add" data-bs-toggle="modal" data-bs-target="#modal-portion" role="button" @click="setCurrentFood(food)">Ajouter</a>
+      <a class="card-link card-link-add" data-bs-toggle="modal" data-bs-target="#modal-quantity" role="button" @click="setCurrentFood(food)">Ajouter</a>
       <a style="color: darkred;" class="card-link card-link-rm" v-show="displayRemoveBtn" @click="removeCurrentFood(food)">Retirer</a>
     </div>
   </div>

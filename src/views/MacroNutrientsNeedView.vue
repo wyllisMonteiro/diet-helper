@@ -3,7 +3,7 @@
     <div style="max-width: 1280px;margin: 35px auto 0 auto;" class="container">
       <h1>Besoin en macro-nutriments</h1>
       <Alert :alertClass="alertErrorClass">
-        Une erreur est survenue
+        {{ errorText }}
       </Alert>
 
       <form>
@@ -56,6 +56,7 @@ export default class MacroNutrientsNeedView extends Vue {
 
   alertCaloricNeedClass = 'alert alert-primary'
   alertErrorClass = 'alert alert-danger'
+  errorText = ''
   protein = 0
   lipid = 0
   carbohydrate = 0
@@ -69,6 +70,7 @@ export default class MacroNutrientsNeedView extends Vue {
       this.alertCaloricNeedClass = 'alert alert-primary display-alert'
     } catch (ex) {
       this.alertErrorClass = 'alert alert-danger display-alert'
+      this.errorText = ex.message
     }
   }
 }

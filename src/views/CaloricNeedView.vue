@@ -3,7 +3,7 @@
     <div style="max-width: 1280px;margin: 35px auto 0 auto;" class="container">
       <h1>Besoin calorique</h1>
       <Alert :alertClass="alertErrorClass">
-        Une erreur est survenue
+        {{ errorText }}
       </Alert>
       <GenderCardsList />
 
@@ -62,6 +62,7 @@ export default class CaloricNeedView extends Vue {
 
   alertCaloricNeedClass = 'alert alert-primary'
   alertErrorClass = 'alert alert-danger'
+  errorText = ''
   baseCaloricNeed = ''
   dryCaloricNeed = ''
   gainCaloricNeed = ''
@@ -81,6 +82,7 @@ export default class CaloricNeedView extends Vue {
       this.alertCaloricNeedClass = 'alert alert-primary display-alert'
     } catch (ex) {
       this.alertErrorClass = 'alert alert-danger display-alert'
+      this.errorText = ex.message
     }
   }
 }

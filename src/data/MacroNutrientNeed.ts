@@ -4,7 +4,7 @@ export const inputTextItemsData = [
     id: 'weight'
   },
   {
-    label: 'Nombre de kcal par jour (kg)',
+    label: 'Nombre de kcal par jour (kcal)',
     id: 'caloric_need'
   }
 ]
