@@ -15,7 +15,6 @@ const computeBMR = (age: number, weight: number, size: number, gender = 'male') 
   }
 
   if (weight < MIN_WEIGHT || weight > MAX_WEIGHT) {
-    alert()
     throw new Error(`Poids doit être compris entre ${MIN_WEIGHT} et ${MAX_WEIGHT} kg`)
   }
 
