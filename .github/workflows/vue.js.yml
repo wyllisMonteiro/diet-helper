@@ -35,10 +35,9 @@ jobs:
     if: github.ref == 'refs/heads/ci-1'
     steps:
     - name: Deploy to Server
-      uses: appleboy/ssh-action@master
-      env:
+      uses: garygrossgarten/github-action-ssh@release
+      with:
+        command: ls -a
         host: ${{ secrets.REMOTE_HOST }}
         username: ${{ secrets.REMOTE_USER }}
-        password: ${{ secrets.REMOTE_PASSWORD }}
-        port: ${{ secrets.REMOTE_PORT }}
-        script: ls
+        privateKey : ${{ secrets.SSH_PRIVATE_KEY}}
