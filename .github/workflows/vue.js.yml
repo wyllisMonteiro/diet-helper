@@ -29,10 +29,10 @@ jobs:
     - run: npm run test:unit
 
     - name: Archive production artifacts
-        uses: actions/upload-artifact@v3
-        with:
-          name: diet
-          path: dist
+      uses: actions/upload-artifact@v3
+      with:
+        name: diet
+        path: dist
 
   deploy:
     runs-on: ubuntu-latest
