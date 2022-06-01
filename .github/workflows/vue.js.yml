@@ -40,6 +40,6 @@ jobs:
         host: ${{ secrets.REMOTE_HOST }}
         username: ${{ secrets.REMOTE_USER }}
         key: ${{ secrets.SSH_PRIVATE_KEY }}
-        source: "package.json"
+        source: package.json
         target: ${{ secrets.REMOTE_TARGET }}
         port: 22
