@@ -34,6 +34,7 @@ jobs:
     needs: build
     if: github.ref == 'refs/heads/master'
     steps:
+    - run: ls -a
     - name: Copy files to Server
       uses: nogsantos/ssh-scp-deploy@v1.3.0
       with:
