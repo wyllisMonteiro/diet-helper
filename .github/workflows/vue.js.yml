@@ -31,7 +31,7 @@ jobs:
     - name: Archive production artifacts
       uses: actions/upload-artifact@v3
       with:
-        name: diet
+        name: dist
         path: dist
 
   deploy:
@@ -43,9 +43,8 @@ jobs:
     - name: Download dist
       uses: actions/download-artifact@v3
       with:
-        name: diet
+        name: dist
 
-    - run: ls -a
     - name: Copy files to Server
       uses: nogsantos/ssh-scp-deploy@v1.3.0
       with:
