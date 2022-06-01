@@ -49,7 +49,7 @@ jobs:
     - name: Copy files to Server
       uses: nogsantos/ssh-scp-deploy@v1.3.0
       with:
-        src: ./package.json
+        src: ./**
         host: ${{ secrets.REMOTE_HOST }}
         remote: ${{ secrets.REMOTE_TARGET }}
         port: 22
