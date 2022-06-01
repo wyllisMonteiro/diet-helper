@@ -28,12 +28,23 @@ jobs:
     - run: npm run build --if-present
     - run: npm run test:unit
 
+    - name: Archive production artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: diet
+          path: dist
+
   deploy:
     runs-on: ubuntu-latest
 
     needs: build
     if: github.ref == 'refs/heads/master'
     steps:
+    - name: Download dist
+      uses: actions/download-artifact@v3
+      with:
+        name: diet
+
     - run: ls -a
     - name: Copy files to Server
       uses: nogsantos/ssh-scp-deploy@v1.3.0
